@@ -22,6 +22,18 @@ module Enumerable
     end
     self
   end
+
+  def my_select
+    return to_enum(my_select) unless block_given?
+    new_arr = []
+    to_a.my_each {|item| new_arr << item if yield(item)}
+    new_arr
+  end
+
+  def my_all?(arg = nil)
+    if block_given?
+      to_a.my_each { |i| return false if yield(i) == false}
+  end
 end
 
 # p (0...7).my_each
