@@ -61,6 +61,9 @@ module Enumerable
     end
     status
   end
+
+  def my_any
+  end
 end
 
 # p (0...7).my_each
