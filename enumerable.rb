@@ -62,7 +62,50 @@ module Enumerable
     status
   end
 
-  def my_any; end
+    def my_any?(argument = nil)
+        arr = to_a
+        status = false
+        if block_given?
+          arr.length.times { |i| status = true if yield(arr.[i]) }
+        elsif !argument.nil?
+          arr.length.times do |i|
+            if argument.is_a?Regexp and arr[i].match(argument)
+              status = true
+            elsif argument.is_a? Class and arr[i].is_a? argument
+              status = true
+            elsif arr[i] == argument
+              status = true
+            end
+          end
+        else
+          arr.length.times { |i| status =  true if arr[i]}  
+        end
+      status
+    end
+
+    def my_none?(argument = nil)
+      arr = to_a
+      status = false
+      if block_given?
+        arr.length.times do |i|
+          status = false if yield(arr[i])
+        end
+        elsif !argument.nil?
+          arr.length.times do |i|
+            if argument.is_a? Regexp
+              status = false if arr[i].match(argument)
+            elsif argument.is_a? Class and arr[i].is_a? argument
+              status = false
+            elsif arr[i] == argument  
+              status = false
+            end
+        end
+        else
+          arr.length.times { |i| status = false if arr[i]}
+        end
+        status          
+    end
+
 end
 
 # p (0...7).my_each
