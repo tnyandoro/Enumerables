@@ -37,7 +37,7 @@ module Enumerable
     if !argument.nil?
       if argument.is_a? Class
         arr.my_each do |i|
-          status = i.class.ancestors.include? arg
+          status = i.class.ancestors.include? argument
           break unless status
         end
       else
@@ -105,6 +105,26 @@ module Enumerable
     end
     status
   end
+
+  def my_count(argument = nil)
+    count = 0
+    arr = to_a
+    if block_given?
+      arr.length.times do |i|
+        count += i if yield(arr[i])
+      end
+      count
+      elsif !argument.nil?
+        my_each do |item|
+          count += i if item == argument 
+        end
+        count
+      else
+        arr.length
+      end
+  end
+
+  def my_map(arg = nil)
 end
 
 # p (0...7).my_each
@@ -112,3 +132,5 @@ n = [2, 2, 6, 6]
 # hs = {"ruby" => "programming", "OOP" => "develop"}
 puts n.all?(&:even?)
 puts n.my_all?(&:even?)
+puts n.my_any?(&:even?)
+puts n.my_none?(&:even?)
