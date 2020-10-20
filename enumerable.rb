@@ -141,7 +141,27 @@ module Enumerable
     end
     new_arr
   end
+
+  def my_inject(arg1 = nil, arg2 = nil)
+    if !arg1.nil? && arg2.nil? && arg1.is_a?(String) || arg1.is_a?(arg2)
+      arg2 = arg1
+      arg1 = nil
+    end
+    (raise LocalJumpError if !block_given? && arg1.nil? && arg2.nil?)
+    if block_given?
+      to_a.my_each { |item| arg1 = arg1.nil? ? item : yield(arg1, item) }
+    elsif !arg1.nil? && arg2.nil?
+      to_a.my_each { |i| arg1 yield i }
+    elsif !arg2.nil?
+      to_a.my_each { |i| arg1 = arg1.nil? ? i : arg1.send(arg2, i) }
+    end
+    arg1
+  end
+
+  def multiply_els
+  end
 end
+
 # p (0...7).my_each
 n = [2, 2, 6, 6]
 # hs = {"ruby" => "programming", "OOP" => "develop"}
