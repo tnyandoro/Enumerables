@@ -141,34 +141,32 @@ module Enumerable
     end
     new_arr
   end
+
   def my_inject(arg1 = nil, arg2 = nil)
-    if !arg1.nil? && arg2.nil? && arg1.is_a?(String) || arg1.is_a?(arg2)
-      arg2 = arg1
-      arg1 = nil
-    end
-    (raise LocalJumpError if !block_given? && arg1.nil? && arg2.nil?)
+    accumul = to_a[0]
+    rest = to_a[1..-1]
+    code = proc { |el| accumul = yield(accumul, el) }
+
     if block_given?
-      to_a.my_each {|item| arg1 = arg1.nil? ? item :yield(arg1, item) } 
-    elsif !arg1.nil? && arg2.nil?
-      to_a.my_each { |i| arg1 yield i}
-    elsif !arg2.nil?
-      to_a.my_each { |i| arg1 = arg1.nil? ? i : arg1.send(arg2, i) }
+      unless arg1
+        rest.my_each(&code)
+        return accumul
+      end
+      accumul = arg1
+      to_a.my_each(&code)
+      return accumul
     end
-    arg1    
-  end
-  def multiply_els(arr)
-    arr.my_inject { |item1, item2| item1 * item2}
+
+    if arg1 && arg2
+      accumul = arg1
+      my_each { |el| accumul = accumul.send(arg2, el) }
+      return accumul
+    end
+    rest.my_each { |el| accumul = accumul.send(arg1, el) } if arg1.is_a?(Symbol)
+    accumul
   end
 end
 
-
-# p (0...7).my_each
-n = [2, 2, 6, 6]
-# hs = {"ruby" => "programming", "OOP" => "develop"}
-puts n.all?(&:even?)
-puts n.my_all?(&:even?)
-puts n.my_any?(&:even?)
-puts n.my_none?(&:even?)
-puts n.my_count(&:even?)
-puts n.my_map(&:even?)
-puts n.my_inject(&:even?)
+def multiply_els(arr)
+  arr.my_inject(:*)
+end
