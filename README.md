@@ -23,7 +23,7 @@ This is project is an Enumerable module that gets mixed into the Array and Hash 
 > To get a local copy of this repo, please run the following command in your terminal
 > Download or clone the repository
 > Start the command prompt and run enumerable.rb in your terminal
-> Or you can go to  [@tnyandoro](https://repl.it/) for a live demo 
+> Or you can go to  [@tnyandoro](https://repl.it/@TendaiNyandoro/Enumerables) for a live demo 
 
 
 ## Git Repo
