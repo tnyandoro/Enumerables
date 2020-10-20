@@ -1,76 +1,62 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
+# BUBBLE SORT
 
-# Project Name
+This is our first ruby project Bubble Sort we built a method #bubble_sort that takes an array and returns a sorted array. It must use the bubble sort methodology. This is to demonstrate the authors basic understanding of the ruby language concepts.
 
-> One paragraph statement about the project.
+The project has methods that takes an array as arguments and sorts them in an ascending order using the bubble sort Algorithim.
 
-![screenshot](./app_screenshot.png)
+![image](https://user-images.githubusercontent.com/30318155/96260403-440ffa00-0fbf-11eb-84d1-adae46835714.png)
 
-Additional description about the project and its features.
+# Built With
 
-## Built With
+> Ruby
+> rubocop.yml
 
-- Major languages
-- Frameworks
-- Technologies used
+## Prerequisites
 
-## Live Demo
+> Ruby installation on the machine for windows OS
+> Basic command line appreciation
 
-[Live Demo Link](https://livedemo.com)
+# Getting started
 
-
-## Getting Started
-
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
+> To get a local copy of this repo, please run the following command in your terminal
+> Download or clone the repository
+> Start the command prompt and run enumerable.rb in your terminal
+> Or you can go to  [@tnyandoro](https://repl.it/) for a live demo 
 
 
-To get a local copy up and running follow these simple example steps.
+## Git Repo
 
-### Prerequisites
-
-### Setup
-
-### Install
-
-### Usage
-
-### Run tests
-
-### Deployment
-
+![git clone](https://github.com/tnyandoro/Enumerables/tree/appfeature_app)
 
 
 ## Authors
 
 👤 **Author1**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
+- GitHub: [@Tendai Nyandoro](https://github.com/tnyandoro)
+- Twitter: [@tendai28](https://twitter.com/tendai28)
+- LinkedIn: [Tendai Nyandoro](https://www.linkedin.com/in/tendai-nyandoro-a8060826/)
 
 👤 **Author2**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
+* Github:[@Lichapa](https://github.com/Lichapa/)
+* Twitter:[@LichapaMphatso](https://twitter.com/LichapaMphatso)
+* LinkedIn:[@Mphatso Lichapa](https://www.linkedin.com/in/mphatsolichapa)
+
+
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/tnyandoro/Enumerables/tree/appfeature_app).
 
 ## Show your support
 
 Give a ⭐️ if you like this project!
 
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
 
 ## 📝 License
 
-This project is [MIT](lic.url) licensed.
+This project is  not licensed.
