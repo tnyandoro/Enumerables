@@ -115,16 +115,31 @@ module Enumerable
       end
       count
     elsif !argument.nil?
-        my_each do |item|
-          count += i if item == argument 
-        end
-        count
+      my_each do |item|
+        count += i if item == argument
+      end
+      count
     else
-        arr.length
+      arr.length
     end
   end
 
   def my_map(arg = nil)
+    return to_enum(:my_map) if arg.nil? && !block_given?
+
+    map_arr = to_a
+    new_arr = []
+    if !arg.nil?
+      map_arr.length.times do |i|
+        new_arr << arg.call(map_arr[i])
+      end
+    elsif block_given?
+      map_arr.length.times do |i|
+        new_arr << yield(map_arr[i])
+      end
+    else return to_enum
+    end
+    new_arr
   end
 end
 # p (0...7).my_each
@@ -134,3 +149,5 @@ puts n.all?(&:even?)
 puts n.my_all?(&:even?)
 puts n.my_any?(&:even?)
 puts n.my_none?(&:even?)
+puts n.my_count(&:even?)
+puts n.my_map(&:even?)
