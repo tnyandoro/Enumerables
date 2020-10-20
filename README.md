@@ -1,11 +1,12 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
-# BUBBLE SORT
+# Enumerable module
 
-This is our first ruby project Bubble Sort we built a method #bubble_sort that takes an array and returns a sorted array. It must use the bubble sort methodology. This is to demonstrate the authors basic understanding of the ruby language concepts.
+This is project is an Enumerable module that gets mixed into the Array and Hash classes (among others) and provides lots of handy iterator methods.. This is to demonstrate the authors basic understanding of the ruby language concepts. To prove that there's no magic to it, we are going to rebuild those methods.
 
-The project has methods that takes an array as arguments and sorts them in an ascending order using the bubble sort Algorithim.
 
-![image](https://user-images.githubusercontent.com/30318155/96260403-440ffa00-0fbf-11eb-84d1-adae46835714.png)
+
+![image](https://user-images.githubusercontent.com/30318155/96634722-3342e980-131b-11eb-9ddd-7c00ded9c4f1.png)
+
 
 # Built With
 
