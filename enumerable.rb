@@ -114,19 +114,19 @@ module Enumerable
         count += i if yield(arr[i])
       end
       count
-      elsif !argument.nil?
+    elsif !argument.nil?
         my_each do |item|
           count += i if item == argument 
         end
         count
-      else
+    else
         arr.length
-      end
+    end
   end
 
   def my_map(arg = nil)
+  end
 end
-
 # p (0...7).my_each
 n = [2, 2, 6, 6]
 # hs = {"ruby" => "programming", "OOP" => "develop"}
