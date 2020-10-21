@@ -5,7 +5,7 @@ This is project is an Enumerable module that gets mixed into the Array and Hash 
 
 
 
-![image](https://user-images.githubusercontent.com/30318155/96634722-3342e980-131b-11eb-9ddd-7c00ded9c4f1.png)
+![image](https://user-images.githubusercontent.com/30318155/96740450-22e54a00-13c1-11eb-9c76-be93fc24c524.png)
 
 
 # Built With
