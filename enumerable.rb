@@ -31,28 +31,30 @@ module Enumerable
   end
 
   def my_all?(argument = nil)
+    return to_enum(:my_all?) unless block_given?
+
     status = true
-    arr = to_a
+
     if !argument.nil?
       if argument.is_a? Class
-        arr.my_each do |i|
+        to_a.my_each do |i|
           status = i.class.ancestors.include? argument
           break unless status
         end
       else
-        arr.my_each do |i|
+        to_a.my_each do |i|
           status = (argument === i)
           break unless status
         end
       end
     else
       if block_given?
-        arr.my_each do |i|
+        to_a.my_each do |i|
           status = yield i
           break unless status
         end
       else
-        arr.my.each do |i|
+        to_a.my.each do |i|
           status = !(i == false || i.nil?)
           break unless status
         end
@@ -82,27 +84,37 @@ module Enumerable
     status
   end
 
-  def my_none?(argument = nil)
+  def my_none?(arg = nil)
     arr = to_a
-    status = false
-    if block_given?
-      arr.length.times do |i|
-        status = false if yield(arr[i])
-      end
-    elsif !argument.nil?
-      arr.length.times do |i|
-        if argument.is_a? Regexp
-          status = false if arr[i].match(argument)
-        elsif argument.is_a? Class and arr[i].is_a? argument
-          status = false
-        elsif arr[i] == argument
-          status = false
+    confirm = true
+
+    if !arg.nil?
+      if arg.is_a? Class
+        arr.my_each do |i|
+          confirm = !(i.class.ancestors.include? arg)
+          break unless confirm
+        end
+
+      else
+        arr.my_each do |i|
+          confirm = !(arg === i)
+          break unless confirm
         end
       end
     else
-      arr.length.times { |i| status = false if arr[i] }
+      if block_given?
+        arr.my_each do |i|
+          confirm = !(yield i)
+          break unless confirm
+        end
+      else
+        arr.my_each do |i|
+          confirm = (i == false || i.nil?)
+          break unless confirm
+        end
+      end
     end
-    status
+    confirm
   end
 
   def my_count(argument = nil)
@@ -110,12 +122,12 @@ module Enumerable
     arr = to_a
     if block_given?
       arr.length.times do |i|
-        count += i if yield(arr[i])
+        count += 1 if yield(arr[i])
       end
       count
     elsif !argument.nil?
       my_each do |item|
-        count += i if item == argument
+        count += 1 if item == argument
       end
       count
     else
@@ -145,6 +157,7 @@ module Enumerable
     accumul = to_a[0]
     rest = to_a[1..-1]
     code = proc { |el| accumul = yield(accumul, el) }
+    raise LocalJumpError if !block_given? && (arg1 == nil) && (arg2 == nil)
 
     if block_given?
       unless arg1
@@ -170,6 +183,17 @@ def multiply_els(arr)
   arr.my_inject(:*)
 end
 
-p [1, 2, 3].my_each(&proc { |x| x > 2 }) == [1, 2, 3]
-p [1, 2, 3].my_each_with_index.class == Enumerator
-p [1,2,3,4].my_select.class == Enumerator
+p [1, 2, 3, 4].my_inject
+# p [1, 2, 3].my_each(&proc { |x| x > 2 }) == [1, 2, 3]
+# p [1, 2, 3].my_each_with_index.class == Enumerator
+# p [1, 2, 3, 4].my_select.class == Enumerator
+# p [true, [false]].all? == [true, [false]].my_all?
+#  my_proc = Proc.new { |n| (n % 7).zero? }
+
+# p [1,2,3].count(&proc{|num|num%2==0}) == [1,2,3].my_count(&proc{|num|num%2==0})
+# p [1, 2, 3, 4, 5].my_none?(&my_proc) == [1, 2, 3, 4, 5].none?(&my_proc)
+# p [false, nil, false].none? == [false, nil, false].my_none?
+# p %w[dog cat].none?(/x/) == %w[dog cat].my_none?(/x/)
+# p ['dog','car'].none?(5) == ['dog','car'].my_none?(5)
+# p [1, 2, 3].count(&my_proc)
+# p [1, 2, 3].my_none?(1)
