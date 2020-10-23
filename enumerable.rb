@@ -35,36 +35,36 @@ module Enumerable
   end
 
   def my_all?(argument = nil)
-    return to_enum(:my_all?) unless block_given?
+    to_a.my_each { |i| return false if yield(i) == false } if block_given?  
 
-    status = true
+     status = true
 
-    if !argument.nil?
-      if argument.is_a? Class
-        to_a.my_each do |i|
-          status = i.class.ancestors.include? argument
-          break unless status
-        end
+     if !argument.nil?
+       if argument.is_a? Class
+         to_a.my_each do |i|
+           status = i.class.ancestors.include? argument
+           break unless status
+         end
+       else
+         to_a.my_each do |i|
+           status = (argument === i)
+           break unless status
+         end
+       end
       else
-        to_a.my_each do |i|
-          status = (argument === i)
-          break unless status
-        end
-      end
-    else
-      if block_given?
-        to_a.my_each do |i|
-          status = yield i
-          break unless status
-        end
-      else
-        to_a.my.each do |i|
-          status = !(i == false || i.nil?)
-          break unless status
-        end
-      end
-    end
-    status
+       if block_given?
+         to_a.my_each do |i|
+           status = yield i
+           break unless status
+         end
+       else
+         to_a.my_each do |i|
+           status = !(i == false || i.nil?)
+           break unless status
+         end
+       end
+     end
+     status
   end
 
   def my_any?(argument = nil)

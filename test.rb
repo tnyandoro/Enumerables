@@ -64,3 +64,5 @@
 # array =  [1, 2, 3]
 # block = proc { |num| num < 4 }
 # p array.my_each_with_index(&block)
+
+# p [1,2,3,4].my_all?(3)
