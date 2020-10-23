@@ -1,6 +1,6 @@
 module Enumerable
   def my_each
-    return to_enum unless block_given?
+    return to_enum(:my_each) unless block_given?
 
     pos = 0
     arr = to_a
@@ -16,14 +16,11 @@ module Enumerable
 
     arr = to_a
     pos = 0
-    my_arr = []
     while pos < arr.length
       yield(arr[pos], pos)
-      my_arr << arr[pos]
-      my_arr << pos
       pos += 1
     end
-    my_arr
+    self
   end
 
   def my_select
@@ -35,36 +32,36 @@ module Enumerable
   end
 
   def my_all?(argument = nil)
-    to_a.my_each { |i| return false if yield(i) == false } if block_given?  
+    to_a.my_each { |i| return false if yield(i) == false } if block_given?
 
-     status = true
+    status = true
 
-     if !argument.nil?
-       if argument.is_a? Class
-         to_a.my_each do |i|
-           status = i.class.ancestors.include? argument
-           break unless status
-         end
-       else
-         to_a.my_each do |i|
-           status = (argument === i)
-           break unless status
-         end
-       end
+    if !argument.nil?
+      if argument.is_a? Class
+        to_a.my_each do |i|
+          status = i.class.ancestors.include? argument
+          break unless status
+        end
       else
-       if block_given?
-         to_a.my_each do |i|
-           status = yield i
-           break unless status
-         end
-       else
-         to_a.my_each do |i|
-           status = !(i == false || i.nil?)
-           break unless status
-         end
-       end
-     end
-     status
+        to_a.my_each do |i|
+          status = (argument === i)
+          break unless status
+        end
+      end
+    else
+      if block_given?
+        to_a.my_each do |i|
+          status = yield i
+          break unless status
+        end
+      else
+        to_a.my_each do |i|
+          status = !(i == false || i.nil?)
+          break unless status
+        end
+      end
+    end
+    status
   end
 
   def my_any?(argument = nil)
@@ -187,3 +184,8 @@ def multiply_els(arr)
   arr.my_inject(:*)
 end
 
+block = proc { |num| num < (0 + 9) / 2 }
+
+range = Range.new(5, 50)
+
+p range.my_each_with_index(&block)
