@@ -1,76 +1,63 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
+# Enumerable module
 
-# Project Name
-
-> One paragraph statement about the project.
-
-![screenshot](./app_screenshot.png)
-
-Additional description about the project and its features.
-
-## Built With
-
-- Major languages
-- Frameworks
-- Technologies used
-
-## Live Demo
-
-[Live Demo Link](https://livedemo.com)
+This is project is an Enumerable module that gets mixed into the Array and Hash classes (among others) and provides lots of handy iterator methods.. This is to demonstrate the authors basic understanding of the ruby language concepts. To prove that there's no magic to it, we are going to rebuild those methods.
 
 
-## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
+![image](https://user-images.githubusercontent.com/30318155/96740450-22e54a00-13c1-11eb-9c76-be93fc24c524.png)
 
 
-To get a local copy up and running follow these simple example steps.
+# Built With
 
-### Prerequisites
+> Ruby
+> rubocop.yml
 
-### Setup
+## Prerequisites
 
-### Install
+> Ruby installation on the machine for windows OS
+> Basic command line appreciation
 
-### Usage
+# Getting started
 
-### Run tests
+> To get a local copy of this repo, please run the following command in your terminal
+> Download or clone the repository
+> Start the command prompt and run enumerable.rb in your terminal
+> Or you can go to  [@tnyandoro](https://repl.it/@TendaiNyandoro/Enumerables) for a live demo 
 
-### Deployment
 
+## Git Repo
+
+![git clone](https://github.com/tnyandoro/Enumerables/tree/appfeature_app)
 
 
 ## Authors
 
 👤 **Author1**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
+- GitHub: [@Tendai Nyandoro](https://github.com/tnyandoro)
+- Twitter: [@tendai28](https://twitter.com/tendai28)
+- LinkedIn: [Tendai Nyandoro](https://www.linkedin.com/in/tendai-nyandoro-a8060826/)
 
 👤 **Author2**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
+* Github:[@Lichapa](https://github.com/Lichapa/)
+* Twitter:[@LichapaMphatso](https://twitter.com/LichapaMphatso)
+* LinkedIn:[@Mphatso Lichapa](https://www.linkedin.com/in/mphatsolichapa)
+
+
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/tnyandoro/Enumerables/tree/appfeature_app).
 
 ## Show your support
 
 Give a ⭐️ if you like this project!
 
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
 
 ## 📝 License
 
-This project is [MIT](lic.url) licensed.
+This project is  not licensed.
