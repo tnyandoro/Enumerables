@@ -1,6 +1,6 @@
 module Enumerable
   def my_each
-    return to_enum(:my_each) unless block_given?
+    return to_enum unless block_given?
 
     pos = 0
     arr = to_a
@@ -14,8 +14,8 @@ module Enumerable
   def my_each_with_index
     return to_enum unless block_given?
 
-    arr = to_a
     pos = 0
+    arr = to_a
     while pos < arr.length
       yield(arr[pos], pos)
       pos += 1
@@ -44,11 +44,12 @@ module Enumerable
         end
       else
         to_a.my_each do |i|
-          status = (argument === i)
+          status = (argument == i)
           break unless status
         end
       end
     else
+      # rubocop: disable Style/IfInsideElse
       if block_given?
         to_a.my_each do |i|
           status = yield i
@@ -63,6 +64,7 @@ module Enumerable
     end
     status
   end
+  # rubocop: enable Style/IfInsideElse
 
   def my_any?(argument = nil)
     arr = to_a
@@ -98,11 +100,12 @@ module Enumerable
 
       else
         arr.my_each do |i|
-          confirm = !(arg === i)
+          confirm = arg != i
           break unless confirm
         end
       end
     else
+      # rubocop: disable Style/IfInsideElse
       if block_given?
         arr.my_each do |i|
           confirm = !(yield i)
@@ -118,6 +121,7 @@ module Enumerable
     confirm
   end
 
+  # rubocop: enable Style/IfInsideElse
   def my_count(argument = nil)
     count = 0
     arr = to_a
@@ -183,9 +187,3 @@ end
 def multiply_els(arr)
   arr.my_inject(:*)
 end
-
-block = proc { |num| num < (0 + 9) / 2 }
-
-range = Range.new(5, 50)
-
-p range.my_each_with_index(&block)
