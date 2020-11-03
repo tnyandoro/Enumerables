@@ -1,6 +1,6 @@
 module Enumerable
   def my_each
-    return to_enum(:my_each) unless block_given?
+    return to_enum unless block_given?
 
     pos = 0
     arr = to_a
@@ -14,9 +14,9 @@ module Enumerable
   def my_each_with_index
     return to_enum unless block_given?
 
-    arr = to_a
     pos = 0
-    while pos < arr.length
+    arr = to_a
+       while pos < arr.length
       yield(arr[pos], pos)
       pos += 1
     end
@@ -184,8 +184,4 @@ def multiply_els(arr)
   arr.my_inject(:*)
 end
 
-block = proc { |num| num < (0 + 9) / 2 }
 
-range = Range.new(5, 50)
-
-p range.my_each_with_index(&block)
