@@ -66,3 +66,11 @@
 # p array.my_each_with_index(&block)
 
 # p [1,2,3,4].my_all?(3)
+
+# arr = %w[test value test enum]
+
+#  puts '-' * 40
+# puts "\n Enum method 1. #my_each \n"
+#   arr.my_each do |p|
+#    puts p
+#  end
