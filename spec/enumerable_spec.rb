@@ -1,4 +1,5 @@
 # enumerable.rb
+
 require './enumerable'
 
 describe Enumerable do
@@ -52,6 +53,7 @@ describe Enumerable do
   end
   describe '#my_all' do
     it 'returns true if given block matches specified condition' do
+      # rubocop: disable Layout/LineLength
       expect(['alpha', 'apple', 'allen key'].my_all? { |x| x[0] == 'a' }).to eql(['alpha', 'apple', 'allen key'].all? { |x| x[0] == 'a' })
     end
     it 'returns false if given block does not matches specified condition' do
@@ -98,7 +100,7 @@ describe Enumerable do
       expect((5..10).my_inject { |sum, n| sum + n }).to eql((5..10).inject { |sum, n| sum + n })
     end
   end
-
+  # rubocop: enable Layout/LineLength
   describe '#multiply_els' do
     it 'return multiple value value of the array' do
       expect(multiply_els([2, 4, 5])).to eql(40)
