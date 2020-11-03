@@ -16,7 +16,7 @@ module Enumerable
 
     pos = 0
     arr = to_a
-       while pos < arr.length
+    while pos < arr.length
       yield(arr[pos], pos)
       pos += 1
     end
@@ -183,5 +183,3 @@ end
 def multiply_els(arr)
   arr.my_inject(:*)
 end
-
-
